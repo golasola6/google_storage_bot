@@ -43,10 +43,11 @@ async def channel_post(client: Client, message: Message):
     string = f"get-{converted_id}"
     base64_string = await encode(string)
     link = f"https://t.me/{client.username}?start={base64_string}"
-    lazydeveloperr = get_shortlink(id, f'https://t.me/{client.username}?start={base64_string}')
-
+    lazydeveloperr = await get_shortlink(id, link)
+    print(link)
+    print(lazydeveloperr)
     reply_markup = InlineKeyboardMarkup([
-        [InlineKeyboardButton("🏮 Share Shortlink 🔥", url=f'https://telegram.me/share/url?url={lazydeveloperr}')],
+        # [InlineKeyboardButton("🏮 Share Shortlink 🔥", url=f'https://telegram.me/share/url?url={lazydeveloperr}')],
         [InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')],
         [InlineKeyboardButton("🚀 Rename", callback_data='rename')]
         ])
